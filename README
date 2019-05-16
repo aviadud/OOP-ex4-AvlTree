@@ -1,0 +1,58 @@
+elkanatovey
+aviadud
+
+
+=============================
+=      File description     =
+=============================
+AvlTree.java -  A class that implements an AVL tree data structure.
+TreeNode.java - A class that implements and manages node objects for the AVL tree.
+
+
+
+=============================
+=          Design           =
+=============================
+I built an underlying node class for the AVL tree as a way to manipulate data, each node contains pointers
+to children, parent, data, and height. They also contain methods to update height respectively. Additionally,
+I wrote some code that was relatively similar (for example the rotations), as the alternative would be over
+engineering and obfuscating code. I am a big proponent of writing an extra few lines, in order to make it
+clear what the intention of a code section is, as opposed to being overly "clever" while making it impossible
+to follow programming logic.
+
+
+=============================
+=  Implementation details   =
+=============================
+Add and delete make use of  balanceFactorCheck() which send to the the same rotation functions. leftRotate(),
+and rightRotate(), additionally they
+both use findClosestNode()(the name is self explanatory),befere insertion deletion after which they update
+height with updateTreeHeightLeafUp(), in general contains also uses findClosestNode() in order to save
+rewriting code. Additionally, although a popular design choice was to create an interface for a BST, I chose
+not to, as i saw it as unecesserry, due to it being a relatively simple design.
+
+=============================
+=    Answers to questions   =
+=============================
+Question 5.1 :
+An array with numbers in the following order:
+-1, -2, 1, -3, 0, 3, 4, 8, 7, 6, 5, 2
+
+Question 5.2 :
+1. O(nlogn) - as the runtime for insert is logn, and insert is done n times, it is O(nlogn)
+2. O(n) - Given a sorted array of length n, we can recursively insert the k/2 element of a given subarray,
+this will construct a Nearly Complete Binary Tree, without any need for rotations, which are the main factor
+adding to the runtime of insert in the usual constructor. Obviously, this was not implemented in the
+constructor of my version of the AVL tree and is only a theoretical construct
+
+Question 5.3 :
+1. O(nlogn)
+2. O(n) - As successor is a total of O(n), using a sorted array as in the case from the previous question, we
+have O(n). However, again as mentioned before in this implementation it will always be(nlogn), although
+theoretically it would be possible to use the algorithm from 5.2 as we could easily build a sorted array using
+ successor in O(n).
+
+Question 5.4
+1. O(1)- yes
+2. by definition as it is bounded by a constant and not a function of n.
+
